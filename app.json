@@ -1,30 +1,57 @@
 {
   "expo": {
-    "name": "crescendo",
-    "slug": "crescendo",
+    "name": "Crescendo",
+    "slug": "Crescendo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/official_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/official_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.crescendo",
+      "buildNumber": "1.0.0",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "googleMapsApiKey": "AIzaSyC_j7vrq2XK5ui9TszKrU8_GbwSUvwFPoQ"
+      }
     },
     "android": {
+      "package": "com.crescendo",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/official_logo.png",
         "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyC_j7vrq2XK5ui9TszKrU8_GbwSUvwFPoQ"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/official_logo.png",
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyC_j7vrq2XK5ui9TszKrU8_GbwSUvwFPoQ",
+          "authDomain": "crescendo-154fb.firebaseapp.com",
+          "databaseURL": "https://crescendo-154fb-default-rtdb.firebaseio.com",
+          "projectId": "crescendo-154fb",
+          "storageBucket": "crescendo-154fb.appspot.com",
+          "messagingSenderId": "117521578099",
+          "appId": "1:117521578099:web:a8da28357fb5804b009206",
+          "measurementId": "G-KJYLWX7DXG"
+        }
+      }
     }
   }
 }
