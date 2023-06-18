@@ -1,9 +1,6 @@
 import 'react-native-gesture-handler';
 
-import * as Analytics from "expo-firebase-analytics";
-
-import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import AddNewRehearsal from './screens/AddNewRehearsal';
 import AddNewSong from './screens/AddNewSong';
@@ -12,6 +9,7 @@ import  HomeScreen  from './screens/Home'
 import { Ionicons } from '@expo/vector-icons';
 import  LoginScreen  from './screens/Login'
 import MembersScreen from './screens/MembersScreen';
+import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import PickMembers from './screens/PickMembers';
 import PickSongs from './screens/PickSongs';
@@ -33,9 +31,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getAuth } from "firebase/auth"
 import { initCrescendoApp } from './db/fb-store';
 
+//import * as Analytics from "expo-firebase-analytics";
+
+
+
 export default function App() {
-  const navigationRef = useNavigationContainerRef();
-  const routeNameRef = useRef();
+  /*const navigationRef = useNavigationContainerRef();
+  const routeNameRef = useRef();*/
 
   const Stack = createNativeStackNavigator();
   const Drawer = createDrawerNavigator();
@@ -168,7 +170,7 @@ export default function App() {
       <UserContextProvider>
         <PaperProvider>
           <NavigationContainer
-            ref={navigationRef}
+            /*ref={navigationRef}
             onReady={() => {
               routeNameRef.current = navigationRef.getCurrentRoute().name;
             }}
@@ -183,7 +185,7 @@ export default function App() {
               }
               // Save the current route name for later comparison
               routeNameRef.current = currentRouteName;
-            }}
+            }}*/
           >
             <Stack.Navigator>
               {isLoggedIn ? (

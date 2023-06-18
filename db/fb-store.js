@@ -130,6 +130,8 @@ export function setupSongsListener(bandCode, updateFunc) {
       } else {
         updateFunc([]);
       }
+    }, (error) => {
+      console.error(error);
     });
   } 
 
@@ -147,6 +149,8 @@ export function setupSongsListener(bandCode, updateFunc) {
       } else {
         updateFunc([]);
       }
+    }, (error) => {
+      console.error(error);
     });
   } 
 
@@ -164,6 +168,8 @@ export function setupSongsListener(bandCode, updateFunc) {
       } else {
         updateFunc([]);
       }
+    }, (error) => {
+      console.error(error);
     });
   } 
 
