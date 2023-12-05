@@ -1,10 +1,14 @@
 import { FlatList, View } from 'react-native';
 
 import CustomListItem from './CustomListItem';
+import { getIconSource } from "../model/MusicianRequestState"
 
-const CustomList = ({ items, iconSource, navigateTo, deleteFunction}) => {
+const CustomList = ({ items, iconSource, navigateTo, deleteFunction, customIcon}) => {
   const renderCustomListItem = ({ index, item }) => {
-    return <CustomListItem item={item} iconSource={iconSource} navigateTo={navigateTo} deleteFunction={deleteFunction}/>;
+    if (customIcon) {
+      iconSource = getIconSource(item.state)
+    }
+    return <CustomListItem item={item} iconSource={iconSource} navigateTo={navigateTo} deleteFunction={deleteFunction} />;
   };
 
   return (

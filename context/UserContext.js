@@ -17,7 +17,6 @@ export const initialUserState = {
 };
 
 const UserContextProvider = ({ children }) => {
-
     const [userState, setUserState] = useState(initialUserState);
 
     const updateUserStateObject = (vals) => {

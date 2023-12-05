@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 
 import React, { useState } from 'react';
 
+import AddNewMusicianRequest from './screens/AddNewMusicianRequest';
 import AddNewRehearsal from './screens/AddNewRehearsal';
 import AddNewSong from './screens/AddNewSong';
 import ConfirmationScreen from './screens/ConfirmationScreen';
@@ -9,6 +10,8 @@ import  HomeScreen  from './screens/Home'
 import { Ionicons } from '@expo/vector-icons';
 import  LoginScreen  from './screens/Login'
 import MembersScreen from './screens/MembersScreen';
+import MusicianRequestScreen from './screens/MusicianRequestScreen';
+import MusicianRequestSummary from './screens/MusicianRequestSummary';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import PickMembers from './screens/PickMembers';
@@ -28,17 +31,10 @@ import VideoListScreen from './screens/VideoListScreen';
 import YTViewerScreen from './screens/YTViewerScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { getAuth } from "firebase/auth"
+import { getAuth } from "firebase/auth";
 import { initCrescendoApp } from './db/fb-store';
 
-//import * as Analytics from "expo-firebase-analytics";
-
-
-
 export default function App() {
-  /*const navigationRef = useNavigationContainerRef();
-  const routeNameRef = useRef();*/
-
   const Stack = createNativeStackNavigator();
   const Drawer = createDrawerNavigator();
   const app = initCrescendoApp();
@@ -58,40 +54,50 @@ export default function App() {
     return (
       <Drawer.Navigator>
           <Drawer.Screen name="HomePage" component={HomeScreen}
-          options={{ 
-            title: 'Home', 
-            drawerIcon: ({color, size}) => 
-            (
-              <Ionicons name="home" color={color} size={size}/>
-            ),
-
-          }} />
+            options={{ 
+              title: 'Home', 
+              drawerIcon: ({color, size}) => 
+              (
+                <Ionicons name="home" color={color} size={size}/>
+              ),
+            }}
+          />
           <Drawer.Screen name="SongsLibraryStack" component={SongLibraryStack}
-          options={{ 
-            title: 'Songs Library', 
-            drawerIcon: ({color, size}) => 
-            (
-              <Ionicons name="musical-notes" color={color} size={size}/>
-            ),
-          }} /> 
+            options={{ 
+              title: 'Songs Library', 
+              drawerIcon: ({color, size}) =>
+              (
+                <Ionicons name="musical-notes" color={color} size={size}/>
+              ),
+            }}
+          />
           <Drawer.Screen name="RehearsalStack" component={RehearsalStack}
-          options={{ 
-            title: 'Rehearsals', 
-            drawerIcon: ({color, size}) => 
-            (
-              <Ionicons name="calendar" color={color} size={size}/>
-            ),
-
-          }} /> 
+            options={{ 
+              title: 'Rehearsals', 
+              drawerIcon: ({color, size}) => 
+              (
+                <Ionicons name="calendar" color={color} size={size}/>
+              ),
+            }}
+          /> 
           <Drawer.Screen name="MembersScreen" component={MembersScreen}
-          options={{ 
-            title: 'Members', 
-            drawerIcon: ({color, size}) => 
-            (
-              <Ionicons name="people" color={color} size={size}/>
-            ),
-
-          }} />
+            options={{ 
+              title: 'Members', 
+              drawerIcon: ({color, size}) => 
+              (
+                <Ionicons name="people" color={color} size={size}/>
+              ),
+            }}
+          />
+          <Drawer.Screen name="MusicianRequestStack" component={MusicianRequestStack}
+            options={{ 
+              title: 'Musician Requests', 
+              drawerIcon: ({color, size}) => 
+              (
+                <Ionicons name="person-add" color={color} size={size}/>
+              ),
+            }}
+          />
       </Drawer.Navigator>
     );
   };
@@ -166,27 +172,40 @@ export default function App() {
     );
   }
 
+  function MusicianRequestStack() {
+    return(
+      <Stack.Navigator screenOptions={
+        {
+          headerShown: false
+        }
+      }>
+        <Stack.Screen name="MusicianRequestScreen" component={MusicianRequestScreen} 
+          options={{
+            title: 'Musician Requests'
+          }}
+        />
+        <Stack.Screen name="AddNewMusicianRequest" component={AddNewMusicianRequest}
+          options={{
+            title: 'Add new Musician Request'
+          }}
+        />
+        <Stack.Screen name="MusicianRequestSummary" component={MusicianRequestSummary}
+          options={{
+            title: 'Summary'
+          }}
+        />
+        <Stack.Screen name="Location" component={RehearsalLocationPicker}
+            options={{ 
+              title: 'Location'
+            }} 
+        /> 
+      </Stack.Navigator>
+    );
+  }
     return (
       <UserContextProvider>
         <PaperProvider>
-          <NavigationContainer
-            /*ref={navigationRef}
-            onReady={() => {
-              routeNameRef.current = navigationRef.getCurrentRoute().name;
-            }}
-            onStateChange={ async () => {
-              const previousRouteName = routeNameRef.current;
-              const currentRouteName = navigationRef.current.getCurrentRoute().name;
-              if (previousRouteName !== currentRouteName) {
-                await Analytics.logEvent("screen_view", {
-                  screen_name: currentRouteName,
-                  screen_class: currentRouteName,
-                });
-              }
-              // Save the current route name for later comparison
-              routeNameRef.current = currentRouteName;
-            }}*/
-          >
+          <NavigationContainer>
             <Stack.Navigator>
               {isLoggedIn ? (
                   <Stack.Screen name="Home" component={Home} options={{ headerShown : false}}/> ) 
@@ -205,7 +224,7 @@ export default function App() {
           </NavigationContainer>
         </PaperProvider>
       </UserContextProvider>
-  );
+    );
 }
 
 const styles = StyleSheet.create({

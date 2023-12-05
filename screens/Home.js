@@ -27,7 +27,7 @@ export default function HomeScreen({navigation}) {
         />
         <Text variant="displaySmall"style={styles.text} >Welcome to Crescendo</Text>
         <Text variant="headlineMedium" style={styles.text} >{userContext.user.name}</Text>
-        <Text variant="headlineSmall" style={styles.text}>Your band Sinergy </Text>
+        <Text variant="headlineSmall" style={styles.text}>{userContext.user.bandName}</Text>
         <Text variant="titleMedium" style={styles.text}>Your band code is: {userContext.user.bandCode}</Text>
         <Button title="Log Out" mode="elevated" onPress={onClickSignOut}>Log Out</Button>
     </View>

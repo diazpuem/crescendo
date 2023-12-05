@@ -1,23 +1,16 @@
 import { FlatList, Pressable, StyleSheet, View } from "react-native";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { CheckBox } from "react-native-elements";
-import CustomClickableIcon from "../components/CustomClickableIcon";
 import { RehearsalContext } from "../context/RehearsalContext";
 import { UserContext } from "../context/UserContext";
 import { getUserBandRoleName } from "../model/UserBandRoles";
 import { setupMembersListener } from "../db/fb-store";
-import { useIsFocused } from "@react-navigation/native";
 
-const PickMembers = ({ navigation }) => {
-    const isFocused = useIsFocused();
+const PickMembers = () => {
     const userContext = useContext(UserContext);
     const rehearsalContext = useContext(RehearsalContext);
-
-
     const [members, setMembers] = useState([])
-    //const [selectedMembers, setSelectedMembers] = useState([]);
-    
     const isChecked = (item) => {
         return rehearsalContext.rehearsal.members.includes(item);
     };

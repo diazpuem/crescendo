@@ -6,12 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 
 const CustomListItem = ({ item, navigateTo, iconSource, deleteFunction}) => {
     const navigation = useNavigation();
-    let source;
+    let imageSource;
     if (iconSource) {
         source = iconSource
     } else {
         source = require('../assets/vynil.png')
     }
+    imageSource = source
     const onPress = () => {
         if (navigateTo) {
             navigation.navigate(navigateTo, { id: item.id });
@@ -31,7 +32,7 @@ const CustomListItem = ({ item, navigateTo, iconSource, deleteFunction}) => {
             style={({ pressed }) => pressed && styles.pressed}
         >
             <ListItem key={item.id}>
-                <Avatar.Image size={24} source={source} />
+                <Avatar.Image size={24} source={imageSource} />
                 <ListItem.Content>
                 <ListItem.Title> {item.name} </ListItem.Title>
                 </ListItem.Content>

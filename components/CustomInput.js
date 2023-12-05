@@ -11,7 +11,8 @@ const CustomInput = ({
   placeholder,
   secureTextEntry,
   keyboardType,
-  editable
+  editable,
+  multiline
 }) => {
   return (
     <Controller
@@ -34,6 +35,7 @@ const CustomInput = ({
               secureTextEntry={secureTextEntry}
               keyboardType={keyboardType}
               editable={editable}
+              multiline = {multiline}
             />
           </View>
           {error && (

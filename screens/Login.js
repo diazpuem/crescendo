@@ -24,11 +24,12 @@ export default function Loginscreen({ route, navigation }) {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, state.email, state.password)
             .then(() => {
-                console.log("PASO AQUI 2")
                 getUserIfExists(state.email,(userResponse) => {
                     if (userResponse) {
                         const userKey = Object.keys(userResponse)[0];
                         const userObject = Object.values(userResponse)[0];
+                        console.log("LOGIN");
+                        console.log(userObject);
                         userObject.userKey = userKey;
                         userContext.setUserState(userObject);
                     }

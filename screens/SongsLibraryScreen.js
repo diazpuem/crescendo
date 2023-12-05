@@ -64,7 +64,7 @@ const SongsLibraryScreen = ({ navigation }) => {
       
     return(
         <View style= {styles.container}>
-           <CustomList items= {songs} deleteFunction={onDelete}/>
+           <CustomList items= {songs} deleteFunction={onDelete} />
         </View>
     );
 };
