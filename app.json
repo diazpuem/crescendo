@@ -40,6 +40,14 @@
     },
     "web": {
       "favicon": "./assets/official_logo.png"
+    },
+    "plugins": [
+      "@react-native-firebase/app"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "86c5cc6b-60aa-4406-a42b-1bb9bd33fb12"
+      }
     }
   }
 }
