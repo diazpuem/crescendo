@@ -35,9 +35,9 @@ import { getAuth } from "firebase/auth";
 import { initCrescendoApp } from './db/fb-store';
 
 export default function App() {
+  const app = initCrescendoApp();
   const Stack = createNativeStackNavigator();
   const Drawer = createDrawerNavigator();
-  const app = initCrescendoApp();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
