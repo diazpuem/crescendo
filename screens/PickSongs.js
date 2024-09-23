@@ -1,8 +1,10 @@
 import { FlatList, Pressable, StyleSheet, View } from "react-native";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import { AlphabeticalComparator } from "../util/Util";
 import { CheckBox } from "react-native-elements";
 import { RehearsalContext } from "../context/RehearsalContext";
+import { TextInput } from "react-native-paper";
 import { UserContext } from "../context/UserContext";
 import { getKeyName } from "../model/SongKeys";
 import { setupSongsListener } from "../db/fb-store";
@@ -11,6 +13,18 @@ const PickSongs = ({ navigation }) => {
     const userContext = useContext(UserContext);
     const rehearsalContext = useContext(RehearsalContext);
     const [songs, setSongs] = useState([])
+
+
+    const [state, setState] = useState({
+        search: ""
+    })
+    
+    const updateStateObject = (vals) => {
+        setState({
+            ...state,
+            ...vals,
+        });
+    };
     
     const isChecked = (item) => {
         return rehearsalContext.rehearsal.songs.includes(item);
@@ -23,10 +37,6 @@ const PickSongs = ({ navigation }) => {
             rehearsalContext.setRehearsalState({ songs: [...rehearsalContext.rehearsal.songs, item]});
         }
       };
-
-    const comparator = (item1, item2) => {
-        return item1.name.toLowerCase() > item2.name.toLowerCase();
-    };
 
     const renderSongs = ({ index, item }) => {
         return (
@@ -45,18 +55,27 @@ const PickSongs = ({ navigation }) => {
 
     useEffect(() => {
         setupSongsListener(userContext.user.bandCode, (items) => {
-            setSongs(items.sort(comparator));
+            setSongs(items.sort(AlphabeticalComparator));
         });
     }, []);
       
     return(
         <View style= {styles.container}>
-           <FlatList
-                keyExtractor={(item) => item.id}
-                data={songs}
-                renderItem={renderSongs}
-                extraData={songs}
-            />
+            <View>
+                <TextInput 
+                    placeholder="Enter for Search a Song" 
+                    onChangeText={(val) => updateStateObject({search: val})}
+                    mode="outlined"
+                />
+            </View>
+            <View>
+                <FlatList
+                    keyExtractor={(item) => item.id}
+                    data={songs}
+                    renderItem={renderSongs}
+                    extraData={songs}
+                />
+            </View>
         </View>
     );
 };
@@ -66,7 +85,7 @@ export default PickSongs;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
+        textAlign: 'center'
     },
     text: {
         textAlign: 'center',

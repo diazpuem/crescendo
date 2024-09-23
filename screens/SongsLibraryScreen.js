@@ -1,3 +1,4 @@
+import { ALPHABETICAL_COMPARATOR, AlphabeticalComparator } from "../util/Util";
 import { Alert, StyleSheet, View } from "react-native";
 import { useContext, useEffect, useState } from "react";
 
@@ -14,10 +15,6 @@ const SongsLibraryScreen = ({ navigation }) => {
     
     const isFocused = useIsFocused();
     const userContext = useContext(UserContext);
-
-    const comparator = (item1, item2) => {
-        return item1.name.toLowerCase() > item2.name.toLowerCase();
-    };
     
     useEffect(() => {
         navigation.getParent().setOptions({
@@ -26,15 +23,14 @@ const SongsLibraryScreen = ({ navigation }) => {
                 icon="add"
                 onPress={() => navigation.navigate("Add Song")}
                 size={24}
-                style={{ color: "#0041C3" , marginRight: 10 }}
+                style={{ color: "#663399" , marginRight: 10 }}
             />
           ),
         });
     },[isFocused]);
-
     useEffect(() => {
         setupSongsListener(userContext.user.bandCode, (items) => {
-          setSongs(items.sort(comparator));
+          setSongs(items.sort(AlphabeticalComparator));
         });
     }, []);
 

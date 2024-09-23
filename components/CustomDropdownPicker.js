@@ -23,7 +23,7 @@ const CustomDropdownPicker = ({
                     <View
                         style={[
                         styles.container,
-                        {borderColor: error ? 'red' : '#e8e8e8'},
+                        {borderColor: error ? '#663399' : '#e8e8e8'},
                         ]}>
                         <DropDownPicker
                             placeholder={placeholder}
@@ -33,10 +33,14 @@ const CustomDropdownPicker = ({
                             value = {value}
                             setValue={(item) => onChange(item())}
                             zIndex={3000}
+                            style = {styles.dropdown}
+                            placeholderStyle={{
+                                color: "grey",
+                            }}
                         />
                     </View>
                     {error && (
-                        <Text style={{color: 'red', alignSelf: 'stretch'}}>{error.message || 'Error'}</Text>
+                        <Text style={{color: '#663399', alignSelf: 'stretch'}}>{error.message || 'Error'}</Text>
                     )}
                     </>
                 )}
@@ -47,14 +51,10 @@ const CustomDropdownPicker = ({
 const styles = StyleSheet.create({
     container: {
       width: '100%',
-  
-      borderColor: '#e8e8e8',
-      borderWidth: 1,
-      borderRadius: 5,
-  
-      paddingHorizontal: 10,
-      marginVertical: 5,
     },
+    dropdown: {
+        backgroundColor: "#fffbff",
+    }
   });
 
 export default CustomDropdownPicker;

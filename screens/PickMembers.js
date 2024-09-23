@@ -1,6 +1,7 @@
 import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { useContext, useEffect, useState } from "react";
 
+import { AlphabeticalComparator } from "../util/Util";
 import { CheckBox } from "react-native-elements";
 import { RehearsalContext } from "../context/RehearsalContext";
 import { UserContext } from "../context/UserContext";
@@ -23,9 +24,6 @@ const PickMembers = () => {
         }
       };
 
-    const comparator = (item1, item2) => {
-        return item1.name.toLowerCase() > item2.name.toLowerCase();
-    };
 
     const renderMembers = ({ index, item }) => {
         return (
@@ -44,7 +42,7 @@ const PickMembers = () => {
 
     useEffect(() => {
         setupMembersListener(userContext.user.bandCode, (items) => {
-            setMembers(items.sort(comparator));
+            setMembers(items.sort(AlphabeticalComparator));
         });
     }, []);
       

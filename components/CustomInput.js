@@ -24,7 +24,7 @@ const CustomInput = ({
           <View
             style={[
               styles.container,
-              {borderColor: error ? 'red' : '#e8e8e8'},
+              {borderColor: error ? '#663399' : '#e8e8e8'},
             ]}>
             <TextInput
               value={value}
@@ -36,10 +36,11 @@ const CustomInput = ({
               keyboardType={keyboardType}
               editable={editable}
               multiline = {multiline}
+              mode = 'outlined'
             />
           </View>
           {error && (
-            <Text style={{color: 'red', alignSelf: 'stretch'}}>{error.message || 'Error'}</Text>
+            <Text style={{color: '#663399', alignSelf: 'stretch'}}>{error.message || 'Error'}</Text>
           )}
         </>
       )}
@@ -49,15 +50,6 @@ const CustomInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    width: '100%',
-
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
-    borderRadius: 5,
-
-    paddingHorizontal: 10,
-    marginVertical: 5,
   },
   input: {},
 });

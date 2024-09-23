@@ -50,13 +50,15 @@ export default function Loginscreen({ route, navigation }) {
             <TextInput 
                 placeholder="Email Address" 
                 onChangeText={(val) => updateStateObject({email: val})}
-                style={styles.input} 
+                style={styles.input}
+                mode = 'outlined'
             />
             <TextInput 
                 placeholder="Password" 
                 onChangeText={(val) => updateStateObject({password: val})} 
                 secureTextEntry={true} 
                 style={styles.input} 
+                mode = 'outlined'
             />
         </View>
         <View style={styles.buttonsView}>

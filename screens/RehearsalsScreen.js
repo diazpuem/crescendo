@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { useContext, useEffect, useState } from "react";
 
+import { AlphabeticalComparator } from "../util/Util";
 import CustomClickableIcon from "../components/CustomClickableIcon";
 import CustomList from "../components/CustomList";
 import Toast from "react-native-root-toast";
@@ -14,10 +15,6 @@ const RehearsalsScreen = ({ navigation }) => {
     
     const isFocused = useIsFocused();
     const userContext = useContext(UserContext);
-
-    const comparator = (item1, item2) => {
-        return item1.name.toLowerCase() > item2.name.toLowerCase();
-    };
     
     useEffect(() => {
         navigation.getParent().setOptions({
@@ -38,7 +35,7 @@ const RehearsalsScreen = ({ navigation }) => {
 
     useEffect(() => {
         setupRehearsalsListener(userContext.user.bandCode, (items) => {
-            setRehearsals(items.sort(comparator));
+            setRehearsals(items.sort(AlphabeticalComparator));
         });
     }, []);
 

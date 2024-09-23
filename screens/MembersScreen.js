@@ -3,6 +3,7 @@ import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { getUserBandRoleIcon, getUserBandRoleName } from "../model/UserBandRoles";
 import { useContext, useEffect, useState } from "react";
 
+import { AlphabeticalComparator } from "../util/Util";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "../context/UserContext";
 import { setupMembersListener } from "../db/fb-store";
@@ -10,11 +11,7 @@ import { setupMembersListener } from "../db/fb-store";
 const MembersScreen = ({ navigation }) => {
     const [members, setMembers] = useState([])
     const userContext = useContext(UserContext);
-
-    const comparator = (item1, item2) => {
-        return item1.name.toLowerCase() > item2.name.toLowerCase();
-    };
-
+    
     const renderMembers = ({ index, item }) => {
         return (
         <Pressable >
@@ -37,7 +34,7 @@ const MembersScreen = ({ navigation }) => {
     
     useEffect(() => {
         setupMembersListener(userContext.user.bandCode, (items) => {
-          setMembers(items.sort(comparator));
+          setMembers(items.sort(AlphabeticalComparator));
         });
     }, []);
 

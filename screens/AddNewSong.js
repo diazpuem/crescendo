@@ -87,17 +87,17 @@ export default function AddNewSong ({ navigation, route}){
                 name="bpm"
                 placeholder="Enter the BPM"
                 control={control}
-                rules={{required: 'The song name is required', maxLength:3}}
+                rules={{maxLength:3}}
             />
         </View>
         <View style={[styles.formEntry, {flexDirection: "row" , alignItems: 'center', marginRight: 65, justifyContent:'space-between'}]}>
             <Avatar.Image size={35} source={require('../assets/youtube-logo.png')} />
-            <Text variant="titleMedium">{videoName}</Text>
+            <Text variant="titleMedium" style={{ color: "#663399", borderColor: 'red'}} >{videoName}</Text>
             <CustomClickableIcon
                 icon="add"
                 onPress={() => navigation.navigate("Browse Videos")}
                 size={24}
-                style={{ color: "#0041C3" , marginRight: 10 }}
+                style={{ color: "#663399" , marginRight: 10, borderColor: 'red'}}
             />
         </View>
         <Button
