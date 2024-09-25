@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.crescendo",
+      "bundleIdentifier": "com.crescendo.bandmanager",
       "buildNumber": "1.0.0",
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
@@ -40,6 +40,24 @@
     },
     "web": {
       "favicon": "./assets/official_logo.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86c5cc6b-60aa-4406-a42b-1bb9bd33fb12"
+      }
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ]
   }
 }
