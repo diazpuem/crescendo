@@ -6,7 +6,7 @@ import { CheckBox } from "react-native-elements";
 import { RehearsalContext } from "../context/RehearsalContext";
 import { UserContext } from "../context/UserContext";
 import { getUserBandRoleName } from "../model/UserBandRoles";
-import { setupMembersListener } from "../db/fb-store";
+import { setupMembersListener } from "../db/fs-store";
 
 const PickMembers = () => {
     const userContext = useContext(UserContext);

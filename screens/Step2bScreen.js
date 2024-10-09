@@ -6,7 +6,7 @@ import CustomDropdownPicker from "../components/CustomDropdownPicker";
 import CustomInput from "../components/CustomInput";
 import { UserBandRoles } from "../model/UserBandRoles";
 import { UserContext } from "../context/UserContext";
-import { getBandName } from "../db/fb-store";
+import { getBandName } from "../db/fs-store";
 import { useForm } from "react-hook-form";
 import { useIsFocused } from "@react-navigation/native";
 

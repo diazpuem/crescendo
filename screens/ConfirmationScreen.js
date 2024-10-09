@@ -12,7 +12,7 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import {useContext, useEffect, useLayoutEffect, useState} from "react";
 
 import { UserContext } from "../context/UserContext";
-import {createNewUserAndBand} from "../db/fb-store"
+import {createNewUserAndBand} from "../db/fs-store"
 import { getUserBandRoleName } from "../model/UserBandRoles";
 import { getUserRoleName } from "../model/UserRoles";
 import { useIsFocused } from "@react-navigation/native";

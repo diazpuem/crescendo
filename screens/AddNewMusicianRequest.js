@@ -9,8 +9,8 @@ import { RehearsalContext } from "../context/RehearsalContext";
 import { UserBandRoles } from "../model/UserBandRoles";
 import { UserContext } from "../context/UserContext";
 import { musicianRequestState } from "../model/MusicianRequestState"
-import { saveNewMusicianRequest } from "../db/fb-store";
-import { setupRehearsalsListener } from "../db/fb-store";
+import { saveNewMusicianRequest } from "../db/fs-store";
+import { setupRehearsalsListener } from "../db/fs-store";
 import { useForm } from "react-hook-form";
 
 export default function AddNewMusicianRequest ({ navigation, route}){

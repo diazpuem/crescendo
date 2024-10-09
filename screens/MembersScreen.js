@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { AlphabeticalComparator } from "../util/Util";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "../context/UserContext";
-import { setupMembersListener } from "../db/fb-store";
+import { setupMembersListener } from "../db/fs-store";
 
 const MembersScreen = ({ navigation }) => {
     const [members, setMembers] = useState([])

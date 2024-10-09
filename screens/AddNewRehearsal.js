@@ -11,7 +11,7 @@ import { UserContext } from "../context/UserContext";
 import { getKeyName } from "../model/SongKeys";
 import { getUserBandRoleName } from "../model/UserBandRoles";
 import { initialRehearsalState } from "../context/RehearsalContext";
-import { saveNewRehearsal } from "../db/fb-store";
+import { saveNewRehearsal } from "../db/fs-store";
 import { useForm } from "react-hook-form";
 
 export default function AddNewRehearsal ({ navigation, route}){

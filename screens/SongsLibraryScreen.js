@@ -6,8 +6,8 @@ import CustomClickableIcon from "../components/CustomClickableIcon";
 import CustomList from "../components/CustomList";
 import Toast from "react-native-root-toast";
 import { UserContext } from "../context/UserContext";
-import { deleteSong } from "../db/fb-store";
-import { setupSongsListener } from "../db/fb-store";
+import { deleteSong } from "../db/fs-store";
+import { setupSongsListener } from "../db/fs-store";
 import { useIsFocused } from "@react-navigation/native";
 
 const SongsLibraryScreen = ({ navigation }) => {

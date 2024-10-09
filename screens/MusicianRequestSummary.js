@@ -1,6 +1,6 @@
 import { Alert, StyleSheet } from "react-native";
 import { Button, Divider, Text } from "react-native-paper";
-import { acceptMusicianRequest, getMusicianRequest, getRehearsalData } from "../db/fb-store";
+import { acceptMusicianRequest, getMusicianRequest, getRehearsalData } from "../db/fs-store";
 import { useContext, useEffect, useState } from "react";
 
 import CustomClickableIcon from "../components/CustomClickableIcon";
@@ -22,9 +22,9 @@ export default function MusicianRequestSummary ({ route, navigation }) {
       getMusicianRequest(route.params?.id, (data) => {
         setMusicianRequest(data);
         getRehearsalData(data.bandCode, data.rehearsalId, (rehearsalData) => {
-          console.log("ESTO");
-          console.log(rehearsalData);
-          setRehearsal(rehearsalData);
+          if (rehearsalData) {
+            setRehearsal(rehearsalData);
+          }
         });
       });
     }

@@ -29,19 +29,16 @@ import { StyleSheet } from 'react-native';
 import UserContextProvider from './context/UserContext';
 import VideoListScreen from './screens/VideoListScreen';
 import YTViewerScreen from './screens/YTViewerScreen';
+import { auth } from "./config/fb-config"
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { getAuth } from "firebase/auth";
-import { initCrescendoApp } from './db/fb-store';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   const Drawer = createDrawerNavigator();
-  const app = initCrescendoApp();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const auth = getAuth(app);
   auth.onAuthStateChanged((user) => {
     if (user != null) {
       setIsLoggedIn(true)

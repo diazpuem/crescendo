@@ -7,7 +7,7 @@ import { RehearsalContext } from "../context/RehearsalContext";
 import { TextInput } from "react-native-paper";
 import { UserContext } from "../context/UserContext";
 import { getKeyName } from "../model/SongKeys";
-import { setupSongsListener } from "../db/fb-store";
+import { setupSongsListener } from "../db/fs-store";
 
 const PickSongs = ({ navigation }) => {
     const userContext = useContext(UserContext);

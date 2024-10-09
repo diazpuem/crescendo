@@ -1,8 +1,6 @@
 import { child, equalTo, get, getDatabase, onValue, orderByChild, orderByKey, push, query, ref, remove, set, update } from "firebase/database"
 
 import { Random4Digit } from "../util/Util";
-import { firebaseConfig } from "../config/fb-config";
-import { initializeApp } from "firebase/app";
 import { musicianRequestState } from "../model/MusicianRequestState"
 
 const USERS_PATH = 'users/';
@@ -11,10 +9,6 @@ const SONGS_PATH = '/songs/';
 const REHEARSALS_PATH = '/rehearsals/';
 const MEMBERS_PATH = '/members/';
 const MUSICIAN_REQUEST_PATH = '/musicianRequest/'
-
-export function initCrescendoApp() {
-    initializeApp(firebaseConfig);
-}
 
 export function createNewUserAndBand(userBandObject, responseFunction) {
     if (!userBandObject.bandCode || userBandObject.bandCode === ""){

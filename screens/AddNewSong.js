@@ -7,7 +7,7 @@ import CustomDropdownPicker from "../components/CustomDropdownPicker";
 import CustomInput from "../components/CustomInput";
 import { SongKeysValues } from "../model/SongKeys";
 import { UserContext } from "../context/UserContext";
-import { saveNewSong } from "../db/fb-store";
+import { saveNewSong } from "../db/fs-store";
 import { useForm } from "react-hook-form";
 
 export default function AddNewSong ({ navigation, route}){

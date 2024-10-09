@@ -5,7 +5,7 @@ import CustomClickableIcon from "../components/CustomClickableIcon";
 import CustomList from "../components/CustomList";
 import { UserContext } from "../context/UserContext";
 import { getUserBandRoleName } from "../model/UserBandRoles";
-import { setupMusicianRequestListener } from "../db/fb-store";
+import { setupMusicianRequestListener } from "../db/fs-store";
 import { useIsFocused } from "@react-navigation/native";
 
 const MusicianRequestScreen = ({ navigation }) => {

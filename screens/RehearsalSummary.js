@@ -7,7 +7,7 @@ import { SummaryEntry } from "./ConfirmationScreen";
 import { UserContext } from "../context/UserContext";
 import { View } from "react-native";
 import { getKeyName } from "../model/SongKeys";
-import { getRehearsalData } from "../db/fb-store";
+import { getRehearsalData } from "../db/fs-store";
 import { getUserBandRoleName } from "../model/UserBandRoles";
 
 export default function RehearsalSummary ({ route, navigation }) {

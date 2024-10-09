@@ -6,8 +6,8 @@ import CustomClickableIcon from "../components/CustomClickableIcon";
 import CustomList from "../components/CustomList";
 import Toast from "react-native-root-toast";
 import { UserContext } from "../context/UserContext";
-import { deleteRehearsal } from "../db/fb-store";
-import { setupRehearsalsListener } from "../db/fb-store";
+import { deleteRehearsal } from "../db/fs-store";
+import { setupRehearsalsListener } from "../db/fs-store";
 import { useIsFocused } from "@react-navigation/native";
 
 const RehearsalsScreen = ({ navigation }) => {
