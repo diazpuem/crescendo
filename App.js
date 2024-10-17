@@ -47,6 +47,32 @@ export default function App() {
     }
   });
 
+  const linkingConfig = {
+    screens: {
+      Home: {
+        initialRouteName: 'home',
+        screens: {
+          HomePage: 'home',
+          SongsLibraryStack: 'songLibrary',
+          RehearsalStack: 'rehearsals',
+          MembersScreen: 'members',
+          MusicianRequestStack: 'musicianRequest'
+        }
+      },
+      LoginStack : {
+        initialRouteName: 'login',
+        screens: {
+          Login: 'login',
+        }
+      }
+    }
+  };
+
+  const linking = {
+    prefixes: ['crescendo://'],
+    config: linkingConfig,
+  };
+
   function Home() {
     return (
       <Drawer.Navigator>
@@ -199,22 +225,28 @@ export default function App() {
       </Stack.Navigator>
     );
   }
+
+  function LoginStack() {
     return (
+      <>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Sign Up" component={SignUpScreen} />
+        <Stack.Screen name="Step 1" component={Step1Screen} />
+        <Stack.Screen name="Step 2a" component={Step2aScreen} />
+        <Stack.Screen name="Step 2b" component={Step2bScreen} />
+        <Stack.Screen name="Confirmation" component={ConfirmationScreen}/>
+     </>
+    );
+  }
+    return ( 
       <UserContextProvider>
         <PaperProvider>
-          <NavigationContainer>
+          <NavigationContainer linking={linking}>
             <Stack.Navigator>
               {isLoggedIn ? (
                   <Stack.Screen name="Home" component={Home} options={{ headerShown : false}}/> ) 
                 : (
-                  <>
-                    <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-                    <Stack.Screen name="Sign Up" component={SignUpScreen} />
-                    <Stack.Screen name="Step 1" component={Step1Screen} />
-                    <Stack.Screen name="Step 2a" component={Step2aScreen} />
-                    <Stack.Screen name="Step 2b" component={Step2bScreen} />
-                    <Stack.Screen name="Confirmation" component={ConfirmationScreen}/>
-                  </>
+                  LoginStack()
                 )
               }
             </Stack.Navigator>
